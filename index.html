@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeWork 30 #18_1</title>
+    <style>
+        .select,
+        .checkbox,
+        .for_shape {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- на странице находятся элементы:
+    div - фигура, которая может принимать какие-то формы
+    select - выбрать тип фигуры (квадрат, прямоугольник, круг). При изменении значения в нем, меняется фигура
+    input для выбора цвета. При его изменении меняется цвет фигуры -->
+
+
+    <div>
+        <form>
+            <div class="select">
+                <label><b>Step 1.</b> Choose the variant of figure:</label><br>
+                <select>
+                    <option value="choose option" disabled selected>Choose option</option>
+                    <option value="square">square</option>
+                    <option value="rectangle">rectangle</option>
+                    <option value="circle">circle</option>
+                    <option value="elips">elips</option>
+                </select>
+            </div>
+            <div class="checkbox">
+                <label><b>Step 2.</b> Choose the color for :</label><br>
+                <input type="checkbox" value="red"> red <br>
+                <input type="checkbox" value="green"> green <br>
+                <input type="checkbox" value="blue"> blue <br>
+                <input type="checkbox" value="orange"> orange <br>
+            </div>
+        </form>
+    </div>
+    <div class="for_shape">
+        <div class="shape"></div>
+    </div>
+
+
+    <script>
+        let select = document.querySelector('select');
+        let shapeElement = document.querySelector('div.shape');
+        let input = document.querySelectorAll('input');
+
+        console.dir(select);
+        // console.dir(input);
+
+        function typeOfShape() {
+            if (this.value === 'circle') {
+                shapeElement.style = '';
+                shapeElement.style.borderRadius = '50%';
+                shapeElement.style.width = '150px';
+                shapeElement.style.height = '150px';
+                checkColor();
+            }
+            if (this.value === 'square') {
+                shapeElement.style = '';
+                shapeElement.style.width = '150px';
+                shapeElement.style.height = '150px';
+                checkColor();
+            }
+            if (this.value === 'rectangle') {
+                shapeElement.style = '';
+                shapeElement.style.width = '250px';
+                shapeElement.style.height = '150px';
+                checkColor();
+            }
+            if (this.value === 'elips') {
+                shapeElement.style = '';
+                shapeElement.style.borderRadius = '50%';
+                shapeElement.style.width = '250px';
+                shapeElement.style.height = '150px';
+                checkColor();
+            }
+        }
+
+        function checkColor() {
+            input.forEach(function (inputElement) {
+                inputElement.addEventListener('change', function () {
+                    if (this.checked) shapeElement.style.backgroundColor = this.value;
+                })
+            })
+        }
+
+        select.addEventListener('change', typeOfShape);
+        
+
+
+
+
+
+    </script>
+</body>
+
+</html>
